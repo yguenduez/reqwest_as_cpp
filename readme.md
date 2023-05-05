@@ -1,4 +1,4 @@
-# Reqest as C++
+# Reqwest as C++
 
 Showcasing how e.g. reqwest can be linked as a static library against a C++ binary with [corrosion](https://github.com/corrosion-rs/corrosion)
 and [cxx](https://cxx.rs/).  
