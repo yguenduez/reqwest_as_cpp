@@ -1,7 +1,7 @@
 pub struct GoogleRequester;
 impl GoogleRequester {
     pub fn fetch(&self) -> String {
-        let body = reqwest::blocking::get("https://www.rust-lang.org")
+        let body = reqwest::blocking::get("https://www.google.com")
             .expect("Could not sent request")
             .text()
             .expect("Could not transform to text")
