@@ -14,5 +14,5 @@ mod ffi {
 }
 
 fn new_requester() -> Box<GoogleRequester> {
-    Box::new(GoogleRequester)
+    Box::new(GoogleRequester::new())
 }

@@ -9,7 +9,9 @@ authors = ["Yasin Guenduez <yasinguenduez1@gmail.com>"]
 #reqwest = { version = "0.11.17", features = ["rustls-tls", "blocking"], default-features = false }
 
 cxx = "1"
-ureq = "2.6.2"
+rustls-native-certs = "0.6.2"
+ureq = { version =  "2.6.2", features = ["rustls-native-certs"] }
+rustls = "0.20"
 
 [build-dependencies]
 cxx-build = "1.0"
