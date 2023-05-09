@@ -1,5 +1,6 @@
 # cpp
 build/
+cmake-build*/
 
 # rust
 target/
