@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.23)
+cmake_minimum_required(VERSION 3.18)
 
 project(rusty_cmake CXX)
 
@@ -31,5 +31,11 @@ corrosion_import_crate(MANIFEST_PATH Cargo.toml)
 corrosion_add_cxxbridge(rusty_lib CRATE reqwest_as_cpp MANIFEST_PATH reqwest_as_cpp FILES lib.rs)
 
 add_executable(main_cpp main.cpp)
+
+if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+    #target_compile_options(main_cpp PRIVATE -framework=Security)
+    target_link_libraries(main_cpp PRIVATE "-framework Security")
+endif()
+
 target_link_libraries(main_cpp PRIVATE rusty_lib)
 

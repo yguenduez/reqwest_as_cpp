@@ -1,0 +1,37 @@
+.linux-build:
+  tags:
+    - k8s
+    - linux
+  image: artifacts.endress.com/tda-docker-local/rust-cpp-image:0.0.1
+
+.mac-build:
+  tags:
+   - smartblue_ios_m1
+
+stages:
+  - build 
+
+linux-build:
+  stage: build
+  extends:
+    - .linux-build
+  script:
+    - mkdir build
+    - cd build
+    - cmake -S ..
+    - cmake --build .
+    - ./main_cpp
+
+mac-build:
+  variables:
+    CMAKE: "/opt/homebrew/bin/cmake"
+  stage: build 
+  extends:
+    - .mac-build  
+  script:
+    - export https_proxy="proxy-ehds.endress.com:8080"
+    - mkdir build
+    - cd build
+    - ${CMAKE} -S ..
+    - ${CMAKE} --build .
+    - ./main_cpp
