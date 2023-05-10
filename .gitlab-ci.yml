@@ -8,6 +8,11 @@
   tags:
    - smartblue_ios_m1
 
+.windows-build:
+  tags:
+   - rust-1.69
+   - windows
+
 stages:
   - build 
 
@@ -21,6 +26,17 @@ linux-build:
     - cmake -S ..
     - cmake --build .
     - ./main_cpp
+
+windows-build:
+  stage: build
+  extends:
+    - .windows-build
+  script:
+    - mkdir build
+    - cd build
+    - cmake -S ..
+    - cmake --build . --config Release
+    - .\Release\main_cpp.exe
 
 mac-build:
   variables:
