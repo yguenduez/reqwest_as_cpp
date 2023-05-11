@@ -24,7 +24,7 @@ linux-build:
     - mkdir build
     - cd build
     - cmake -S ..
-    - cmake --build .
+    - cmake --build . --config Release
     - ./main_cpp
 
 windows-build:
@@ -49,5 +49,5 @@ mac-build:
     - mkdir build
     - cd build
     - ${CMAKE} -S ..
-    - ${CMAKE} --build .
+    - ${CMAKE} --build . --config Release
     - ./main_cpp
