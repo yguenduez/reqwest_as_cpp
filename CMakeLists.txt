@@ -33,7 +33,6 @@ corrosion_add_cxxbridge(rusty_lib CRATE reqwest_as_cpp MANIFEST_PATH reqwest_as_
 add_executable(main_cpp main.cpp)
 
 if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-    #target_compile_options(main_cpp PRIVATE -framework=Security)
     target_link_libraries(main_cpp PRIVATE "-framework Security")
 endif()
 
