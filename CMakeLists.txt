@@ -31,10 +31,13 @@ corrosion_import_crate(MANIFEST_PATH Cargo.toml)
 corrosion_add_cxxbridge(rusty_lib CRATE reqwest_as_cpp MANIFEST_PATH reqwest_as_cpp FILES lib.rs)
 
 add_executable(main_cpp main.cpp)
+target_link_libraries(main_cpp PRIVATE rusty_lib)
+
+add_library(cpp_lib STATIC lib.cpp)
+target_include_directories(cpp_lib PUBLIC include)
+target_link_libraries(cpp_lib PRIVATE rusty_lib)
 
 if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     target_link_libraries(main_cpp PRIVATE "-framework Security")
+    target_link_libraries(cpp_lib PRIVATE "-framework Security")
 endif()
-
-target_link_libraries(main_cpp PRIVATE rusty_lib)
-
